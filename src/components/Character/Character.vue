@@ -8,7 +8,7 @@
             <h3>{{ char.name }}</h3>
           </div>
           <div class="card-action">
-            <a href="#">Details</a>
+            <router-link :to="{ name: 'details', params: { id: char.id } }">Details</router-link>
             <a href="#">Add to favorites</a>
           </div>
         </div>

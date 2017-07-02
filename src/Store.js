@@ -10,5 +10,9 @@ export const Store = {
     axios.get(api).then((res) => {
       this.datas.characters = res.data;
     })
+  },
+
+  getCharacter(id) {
+    let charURL = ``
   }
 }
