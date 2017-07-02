@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import List from '@/components/List/List'
+import Details from '@/components/Details/Details'
 
 Vue.use(Router)
 
@@ -8,8 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'list',
+      component: List
+    },
+    {
+      path: '/details/:id',
+      name: 'details',
+      component: Details
     }
   ]
 })

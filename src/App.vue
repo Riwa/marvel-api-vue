@@ -1,7 +1,15 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <header>
+      <nav>
+        <div class="nav-wrapper red">
+          <h1><router-link to="/">Marvel's API app</router-link></h1>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -12,12 +20,13 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 64px
+  }
+
+  header {
+    text-align: center;
+  }
 </style>
