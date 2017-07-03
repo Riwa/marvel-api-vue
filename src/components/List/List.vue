@@ -1,12 +1,17 @@
 <template>
   <v-layout row>
     <v-flex xs12 sm6 offset-sm3>
+      <v-toolbar class="red" light>
+        <v-toolbar-title class="hidden-sm-and-down">Main list</v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
       <v-card>
         <v-list>
-          <character v-for="c in dataStore.characters.data.results" :key="c.id" :char="c"></character>
+          <character v-for="c in dataStore.characters.results" :key="c.id" :char="c"></character>
         </v-list>
       </v-card>
     </v-flex>
+    <vue-progress-bar></vue-progress-bar>
   </v-layout>
 </template>
 
@@ -25,8 +30,11 @@ export default {
   },
   created() {
     this.$Progress.start()
-    Store.loadDatas();
+    Store.loadDatas()
     console.log(this.dataStore.characters.data)
+  },
+  updated() {
+    this.$Progress.finish()
   }
 }
 </script>

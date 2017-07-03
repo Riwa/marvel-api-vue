@@ -6,11 +6,9 @@ export const Store = {
 
   loadDatas() {
 
-
-
     axios.get('http://localhost:3000/').then((response) => {
       this.datas.characters = response.data;
-        console.log(response.data)
+        // console.log(response.data)
     })
   },
 

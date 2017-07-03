@@ -18,7 +18,9 @@
   </v-toolbar>
   <main>
     <v-container fluid>
+      <transition name="fade">
       <router-view></router-view>
+      </transition>
     </v-container>
   </main>
   <v-footer class="red"></v-footer>
@@ -37,7 +39,7 @@ export default {
     font-size: 30px;
     line-height: 64px
   }
-  
+
   .t-title {
     text-transform: uppercase;
     text-align: center;
