@@ -1,17 +1,38 @@
 <template>
-  <div>
-    <router-link class="btn red back" to="/"> <i class="material-icons">keyboard_backspace</i> Back to the list </router-link>
-    <div class="center">
-      <h1>{{ details.data.results[0].name }}</h1>
-      <img :src="details.data.results[0].thumbnail.path + '.' + details.data.results[0].thumbnail.extension">
-      <p>{{ details.data.results[0].description }}</p>
-      <p v-if="details.data.results[0].description.length === 0">Description not available</p>
-      <p> Seen in {{details.data.results[0].comics.available}} comics </p>
-    </div>
-    <ul class="collection">
-      <li v-for="comic in comics.data.results" :key="comic.name" class="collection-item">{{comic.title}}</li>
-    </ul>
-  </div>
+  <!--<div>
+        <router-link class="btn red back" to="/"> <i class="material-icons">keyboard_backspace</i> Back to the list </router-link>
+        <div class="center">
+          <h1>{{ details.data.results[0].name }}</h1>
+          <img :src="details.data.results[0].thumbnail.path + '.' + details.data.results[0].thumbnail.extension">
+          <p>{{ details.data.results[0].description }}</p>
+          <p v-if="details.data.results[0].description.length === 0">Description not available</p>
+          <p> Seen in {{details.data.results[0].comics.available}} comics </p>
+        </div>
+        <ul class="collection">
+          <li v-for="comic in comics.data.results" :key="comic.name" class="collection-item">{{comic.title}}</li>
+        </ul>
+      </div>-->
+  
+  <v-layout row>
+    <v-flex xs12 sm6 offset-sm3>
+      <v-card horizontal>
+        <v-card-row img="details.data.results[0].thumbnail.path + '.' + details.data.results[0].thumbnail.extension" height="130px"></v-card-row>
+        <v-card-column>
+          <v-card-row height="75px" class="brown white--text">
+            <v-card-text>
+              <strong>Reservation at Lazy Bear</strong>
+              <div>Feb 23, 7:00pm</div>
+            </v-card-text>
+          </v-card-row>
+          <v-card-row actions class="brown darken-2">
+            <v-btn flat class="white--text">
+              <v-icon left light>directions</v-icon>Directions
+            </v-btn>
+          </v-card-row>
+        </v-card-column>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -38,9 +59,9 @@ export default {
 </script>
 
 <style scoped>
-  .back {
-    margin-top: 30px;
-  }
+.back {
+  margin-top: 30px;
+}
 </style>
 
 
