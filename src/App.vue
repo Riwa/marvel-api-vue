@@ -13,15 +13,15 @@
     <vue-progress-bar></vue-progress-bar>
   </div>-->
   <v-app>
-  <v-toolbar>
-    <v-toolbar-title>Marvel's API</v-toolbar-title>
+  <v-toolbar class="red">
+    <v-toolbar-title class="white--text t-title"><strong>Marvel</strong>'s API</v-toolbar-title>
   </v-toolbar>
   <main>
     <v-container fluid>
       <router-view></router-view>
     </v-container>
   </main>
-  <v-footer></v-footer>
+  <v-footer class="red"></v-footer>
 </v-app>
 </template>
 
@@ -37,8 +37,9 @@ export default {
     font-size: 30px;
     line-height: 64px
   }
-
-  header {
+  
+  .t-title {
+    text-transform: uppercase;
     text-align: center;
   }
 </style>

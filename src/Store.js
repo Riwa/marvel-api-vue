@@ -10,7 +10,6 @@ export const Store = {
 
     axios.get('http://localhost:3000/').then((response) => {
       this.datas.characters = response.data;
-      this.$Progress.finish()
         console.log(response.data)
     })
   },

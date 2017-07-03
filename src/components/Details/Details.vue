@@ -18,7 +18,7 @@
       <v-card horizontal>
         <v-card-row :img="details.data.results[0].thumbnail.path + '.' + details.data.results[0].thumbnail.extension" height="300px"></v-card-row>
         <v-card-column>
-          <v-card-row class="brown white--text">
+          <v-card-row class="red white--text">
             <v-card-text>
               <strong>{{ details.data.results[0].name }}</strong>
               <div>Seen in {{details.data.results[0].comics.available}} comics</div>
@@ -27,9 +27,9 @@
               </div>
             </v-card-text>
           </v-card-row>
-          <v-card-row actions class="brown darken-2">
+          <v-card-row actions class="red accent-4">
             <v-btn exact href="http://www.google.fr" flat class="white--text">
-              <v-icon left light>directions</v-icon>Directions
+              <v-icon left light>details</v-icon>More
             </v-btn>
           </v-card-row>
         </v-card-column>
