@@ -12,7 +12,7 @@
         </v-list>
       </v-card>
       <div class="text-xs-center">
-        <v-pagination :length.number="Math.ceil(dataStore.characters.total / 20)" v-model="currentPage" @input="getPage($event)"></v-pagination>
+        <v-pagination :length.number="Math.floor((dataStore.characters.total - 100) / 20)" v-model="currentPage" @input="getPage($event)"></v-pagination>
       </div>
     </v-flex>
     <vue-progress-bar></vue-progress-bar>
@@ -47,8 +47,9 @@ export default {
 
   methods: {
     getPage(pageNb) {
+      this.$Progress.start(1)
       Store.loadPage(pageNb).then((res) => {
-      console.log('page loaded')
+      this.$Progress.finish()
     })
     }
 
