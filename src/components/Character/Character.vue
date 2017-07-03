@@ -1,40 +1,36 @@
 <template>
-    <div class="col s12 m6">
-      <div class="card horizontal">
-        <div class="card-image" :style="{ backgroundImage: 'url(' + char.thumbnail.path + '.' + char.thumbnail.extension + ')' }">
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <h3>{{ char.name }}</h3>
-          </div>
-          <div class="card-action">
-            <router-link :to="{ name: 'details', params: { id: char.id } }">Details</router-link>
-            <a href="#">Add to favorites</a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <v-list-item>
+    <v-list-tile avatar>
+      <v-list-tile-action>
+        <v-icon>star</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title v-text="char.name"></v-list-tile-title>
+      </v-list-tile-content>
+      <v-list-tile-avatar>
+        <img v-bind:src="char.thumbnail.path + '.' + char.thumbnail.extension">
+      </v-list-tile-avatar>
+    </v-list-tile>
+  </v-list-item>
 </template>
 
 <script>
 export default {
-  name:'character',
-  props:['char']
+  name: 'character',
+  props: ['char']
 }
 </script>
 
 <style scoped>
+.card-image {
+  width: 315px;
+  height: 250px;
+  background-size: cover;
+}
 
-  .card-image {
-    width:315px;
-    height: 250px;
-    background-size: cover;
-  }
-
-  h3 {
-    font-size: 24px;
-  }
-
+h3 {
+  font-size: 24px;
+}
 </style>
 
 

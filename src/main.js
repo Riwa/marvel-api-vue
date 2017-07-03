@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueProgressBar from 'vue-progressbar'
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
 
 Vue.use(VueProgressBar, {
   color: 'rgb(143, 255, 199)',

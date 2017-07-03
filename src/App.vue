@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <!--<div id="app">
     <header>
       <nav>
         <div class="nav-wrapper red">
@@ -11,7 +11,17 @@
       <router-view></router-view>
     </div>
     <vue-progress-bar></vue-progress-bar>
-  </div>
+  </div>-->
+  <v-app>
+  <v-navigation-drawer></v-navigation-drawer>
+  <v-toolbar></v-toolbar>
+  <main>
+    <v-container fluid>
+      <router-view></router-view>
+    </v-container>
+  </main>
+  <v-footer></v-footer>
+</v-app>
 </template>
 
 <script>
