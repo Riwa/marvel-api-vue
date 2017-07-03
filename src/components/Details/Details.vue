@@ -1,4 +1,4 @@
-<template>  
+<template>
   <v-layout row transition="v-slide-x-transition">
     <v-flex xs12 sm6 offset-sm3 v-if="details.results">
       <v-toolbar class="red d-toolbar" light>
@@ -11,7 +11,7 @@
           <v-icon>favorite</v-icon>
         </v-btn>
       </v-toolbar>
-      <v-card horizontal >
+      <v-card horizontal>
         <v-card-row :img="details.results[0].thumbnail.path + '.' + details.results[0].thumbnail.extension" height="300px"></v-card-row>
         <v-card-column>
           <v-card-row class="red white--text">
@@ -24,9 +24,11 @@
             </v-card-text>
           </v-card-row>
           <v-card-row actions class="red accent-4">
-            <a class="link" :href="details.results[0].urls[0].url" target="_blank"><v-btn flat class="white--text">
-              <v-icon left light>details</v-icon>More
-            </v-btn></a>
+            <a class="link" :href="details.results[0].urls[0].url" target="_blank">
+              <v-btn flat class="white--text">
+                <v-icon left light>details</v-icon>More
+              </v-btn>
+            </a>
           </v-card-row>
         </v-card-column>
       </v-card>
@@ -44,7 +46,7 @@
       </v-card>
     </v-flex>
     <v-progress-circular :size="150" id="progress-circ" v-else indeterminate class="primary--text"></v-progress-circular>
-
+  
     <vue-progress-bar></vue-progress-bar>
   </v-layout>
 </template>
@@ -70,7 +72,7 @@ export default {
       this.$Progress.finish()
     });
 
-     Store.getComic(this.$route.params.id).then((res) => {
+    Store.getComic(this.$route.params.id).then((res) => {
       this.comics = res;
     })
   }
@@ -78,9 +80,10 @@ export default {
 </script>
 
 <style scoped>
-#progress-circ{
+#progress-circ {
   margin: auto;
 }
+
 .back {
   margin-top: 30px;
 }
@@ -92,8 +95,9 @@ export default {
 .d-toolbar {
   margin-bottom: 15px;
 }
- a.link{
-      text-decoration: none;
+
+a.link {
+  text-decoration: none;
 }
 </style>
 

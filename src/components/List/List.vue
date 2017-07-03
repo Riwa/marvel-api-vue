@@ -2,14 +2,18 @@
   <v-layout row>
     <v-flex xs12 sm6 offset-sm3>
       <v-toolbar class="red" light>
-        <v-toolbar-title class="hidden-sm-and-down"><i class="material-icons">view_list</i> Liste des personages</v-toolbar-title>
+        <v-toolbar-title class="hidden-sm-and-down">
+          <i class="material-icons">view_list</i> Liste des personages</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
       <v-card>
-      <v-list>
+        <v-list>
           <character v-for="character in dataStore.characters.results" :key="character.id" :char="character"></character>
-      </v-list>
+        </v-list>
       </v-card>
+      <div class="text-xs-center">
+        <v-pagination :length.number="Math.ceil(dataStore.characters.total / 20)" v-model="currentPage" @input="getPage($event)"></v-pagination>
+      </div>
     </v-flex>
     <vue-progress-bar></vue-progress-bar>
   </v-layout>
@@ -29,15 +33,26 @@ export default {
   data() {
     return {
       dataStore: Store.datas, // Store Management Pattern 
+      currentPage: 1,
     }
   },
 
   created() {
-    this.$Progress.start()
-    Store.loadDatas().then((res) =>{
+    this.$Progress.start(1)
+    Store.loadDatas().then((res) => {
       this.$Progress.finish()
+      console.log(this.dataStore)
     })
+  },
+
+  methods: {
+    getPage(pageNb) {
+      Store.loadPage(pageNb).then((res) => {
+      console.log('page loaded')
+    })
+    }
+
   }
-  
+
 }
 </script>

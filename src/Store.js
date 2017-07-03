@@ -25,6 +25,14 @@ export const Store = {
 
   /**
    * 
+   */
+
+  loadPage(pageNb) {
+    return axios.get(`${URL}/page/${pageNb}`).then((response) => this.datas.characters = response.data);
+  },
+
+  /**
+   * 
    * @param {*} id 
    */
   getCharacter(id) {
