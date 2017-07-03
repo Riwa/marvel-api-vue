@@ -25,12 +25,13 @@ export default {
     }
   },
   created() {
-    axios.get(`https://gateway.marvel.com:443/v1/public/characters/${this.$route.params.id}?apikey=dd9da99314fa8e5875a042a8fc03aa01`).then((res) => {
+    axios.get(`http://localhost:3000/details/${this.$route.params.id}`).then((res) => {
       this.details = res.data;
     });
 
-    axios.get(`https://gateway.marvel.com:443/v1/public/characters/${this.$route.params.id}/comics?limit=3&apikey=dd9da99314fa8e5875a042a8fc03aa01`).then((res) => {
+    axios.get(`http://localhost:3000/details/comics/${this.$route.params.id}`).then((res) => {
       this.comics = res.data;
+      console.log(this.comics)
     })
   }
 }

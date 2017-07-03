@@ -18,8 +18,9 @@
       }
     },
     created(){
+      this.$Progress.start()
       Store.loadDatas();
-      // console.log(this.dataStore.characters.data.results)
+       console.log(this.dataStore.characters)
     }
   }
 </script>
