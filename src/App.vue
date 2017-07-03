@@ -10,6 +10,7 @@
     <div class="container">
       <router-view></router-view>
     </div>
+    <vue-progress-bar></vue-progress-bar>
   </div>
 </template>
 
