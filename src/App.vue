@@ -1,17 +1,4 @@
 <template>
-  <!--<div id="app">
-    <header>
-      <nav>
-        <div class="nav-wrapper red">
-          <h1><router-link to="/">Marvel's API app</router-link></h1>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <router-view></router-view>
-    </div>
-    <vue-progress-bar></vue-progress-bar>
-  </div>-->
   <v-app>
   <v-toolbar class="red">
     <v-toolbar-title class="white--text t-title"><strong>Marvel</strong>'s API</v-toolbar-title>
@@ -33,7 +20,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   h1 {
     margin: 0;
     font-size: 30px;

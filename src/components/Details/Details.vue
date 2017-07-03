@@ -1,20 +1,6 @@
-<template>
-  <!--<div>
-            <router-link class="btn red back" to="/"> <i class="material-icons">keyboard_backspace</i> Back to the list </router-link>
-            <div class="center">
-              <h1>{{ details.data.results[0].name }}</h1>
-              <img :src="details.data.results[0].thumbnail.path + '.' + details.data.results[0].thumbnail.extension">
-              <p>{{ details.data.results[0].description }}</p>
-              <p v-if="details.data.results[0].description.length === 0">Description not available</p>
-              <p> Seen in {{details.data.results[0].comics.available}} comics </p>
-            </div>
-            <ul class="collection">
-              <li v-for="comic in comics.data.results" :key="comic.name" class="collection-item">{{comic.title}}</li>
-            </ul>
-          </div>-->
-  
+<template>  
   <v-layout row transition="v-slide-x-transition">
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex xs12 sm6 offset-sm3 v-if="details.results">
       <v-toolbar class="red d-toolbar" light>
         <v-btn icon light router href="/">
           <v-icon>arrow_back</v-icon>
@@ -25,7 +11,7 @@
           <v-icon>favorite</v-icon>
         </v-btn>
       </v-toolbar>
-      <v-card horizontal>
+      <v-card horizontal >
         <v-card-row :img="details.results[0].thumbnail.path + '.' + details.results[0].thumbnail.extension" height="300px"></v-card-row>
         <v-card-column>
           <v-card-row class="red white--text">
@@ -38,9 +24,9 @@
             </v-card-text>
           </v-card-row>
           <v-card-row actions class="red accent-4">
-            <v-btn flat class="white--text">
+            <a class="link" :href="details.results[0].urls[0].url" target="_blank"><v-btn flat class="white--text">
               <v-icon left light>details</v-icon>More
-            </v-btn>
+            </v-btn></a>
           </v-card-row>
         </v-card-column>
       </v-card>
@@ -57,39 +43,44 @@
         </v-list>
       </v-card>
     </v-flex>
-      <vue-progress-bar></vue-progress-bar>
+    <v-progress-circular :size="150" id="progress-circ" v-else indeterminate class="primary--text"></v-progress-circular>
+
+    <vue-progress-bar></vue-progress-bar>
   </v-layout>
 </template>
 
 <script>
 import axios from 'axios';
+import { Store } from '@/Store.js'
+
 export default {
   name: 'details',
   data() {
     return {
-      details: [],
+      details: {},
       comics: [],
     }
   },
   created() {
 
-        this.$Progress.start()
+    this.$Progress.start()
 
-    axios.get(`http://localhost:3000/details/${this.$route.params.id}`).then((res) => {
-      this.details = res.data;
-      console.log(this.details)
+    Store.getCharacter(this.$route.params.id).then((res) => {
+      this.details = res;
       this.$Progress.finish()
     });
 
-    axios.get(`http://localhost:3000/details/comics/${this.$route.params.id}`).then((res) => {
-      this.comics = res.data;
-      console.log(this.comics)
+     Store.getComic(this.$route.params.id).then((res) => {
+      this.comics = res;
     })
   }
 }
 </script>
 
 <style scoped>
+#progress-circ{
+  margin: auto;
+}
 .back {
   margin-top: 30px;
 }
@@ -100,6 +91,9 @@ export default {
 
 .d-toolbar {
   margin-bottom: 15px;
+}
+ a.link{
+      text-decoration: none;
 }
 </style>
 
