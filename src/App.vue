@@ -13,8 +13,9 @@
     <vue-progress-bar></vue-progress-bar>
   </div>-->
   <v-app>
-  <v-navigation-drawer></v-navigation-drawer>
-  <v-toolbar></v-toolbar>
+  <v-toolbar>
+    <v-toolbar-title>Marvel's API</v-toolbar-title>
+  </v-toolbar>
   <main>
     <v-container fluid>
       <router-view></router-view>

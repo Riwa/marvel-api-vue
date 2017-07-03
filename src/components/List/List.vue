@@ -26,7 +26,7 @@ export default {
   created() {
     this.$Progress.start()
     Store.loadDatas();
-    console.log(this.dataStore.characters)
+    console.log(this.dataStore.characters.data)
   }
 }
 </script>
