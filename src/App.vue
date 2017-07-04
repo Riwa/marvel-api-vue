@@ -1,17 +1,25 @@
 <template>
-  <div id="app">
-    <header>
-      <nav>
-        <div class="nav-wrapper red">
-          <h1><router-link to="/">Marvel's API app</router-link></h1>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <router-view></router-view>
-    </div>
-    <vue-progress-bar></vue-progress-bar>
-  </div>
+  <v-app>
+    <v-toolbar class="red" light>
+      <v-toolbar-title>
+        <h1>
+          <strong>Marvel</strong>
+        </h1>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn router :to="{ name: 'favelist'}" icon light>
+        <v-icon>favorite</v-icon>
+      </v-btn>
+    </v-toolbar>
+    <main>
+      <v-container fluid>
+        <transition name="fade">
+          <router-view></router-view>
+        </transition>
+      </v-container>
+    </main>
+    <v-footer class="red"></v-footer>
+  </v-app>
 </template>
 
 <script>
@@ -20,14 +28,13 @@ export default {
 }
 </script>
 
-<style>
-  h1 {
-    margin: 0;
-    font-size: 30px;
-    line-height: 64px
-  }
-
-  header {
-    text-align: center;
-  }
+<style scoped>
+h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 64px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
 </style>

@@ -1,7 +1,7 @@
 // Express
 let express = require('express')
 let app = express()
-let axios = require('axios')
+let api = require('./Api.js')
 
 let cors = require('cors');
 let bodyParser = require('body-parser');
@@ -16,33 +16,47 @@ app.use(cors());
 logger('tiny')
 app.use(helmet());
 
-app.get('/', (req, res) => {
+/**
+ * Throw errors in JSON format
+ */
+app.use(function (error, request, response, next) {
+  response.status(error.status || 500);
+  response.json({ error: error.message });
+});
 
-  axios.get(`https://gateway.marvel.com/v1/public/characters?offset=100&ts=1&apikey=dd9da99314fa8e5875a042a8fc03aa01&hash=06dd2f10f2db7f1693516ebe70254ac7`).then((response) => {
-    res.setHeader('Content-Type', 'application/json');
-    return res.json(response.data)
+/**
+ * Load first batch of datas
+ */
+app.get('/', (req, res) => {
+  api.getList().then((response) => {
+    res.json(response);
   })
 
 })
 
-app.get('/details/:id', (req, res) => {
+app.get('/page/:pageNb', (req, res) => {
+  api.getPage(req.params.pageNb).then((response) => {
+    res.json(response)
+  })
+})
 
-  axios.get(`https://gateway.marvel.com/v1/public/characters/${req.params.id}?ts=1&apikey=dd9da99314fa8e5875a042a8fc03aa01&hash=06dd2f10f2db7f1693516ebe70254ac7`).then((response) => {
-    res.setHeader('Content-Type', 'application/json');
-    return res.json(response.data)
+app.get('/details/:id', (req, res) => {
+  if (!req.params.id) throw 'ID is required !'
+  api.getCharacter(req.params.id).then((response) => {
+    res.json(response);
   })
 
 })
 
 app.get('/details/comics/:id', (req, res) => {
-
-  axios.get(`https://gateway.marvel.com:443/v1/public/characters/${req.params.id}/comics?limit=3&ts=1&apikey=dd9da99314fa8e5875a042a8fc03aa01&hash=06dd2f10f2db7f1693516ebe70254ac7`).then((response) => {
-    res.setHeader('Content-Type', 'application/json');
-    return res.json(response.data)
-  })
+  if (!req.params.id) throw 'ID is required !'
+ api.getComics(req.params.id).then((response) => {
+   res.json(response);
+ })
 
 })
 
+// Run server on port 3000
 app.listen(3000, function () {
   console.log('Listened on port 3000!')
 })

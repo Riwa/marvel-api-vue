@@ -1,40 +1,56 @@
 <template>
-    <div class="col s12 m6">
-      <div class="card horizontal">
-        <div class="card-image" :style="{ backgroundImage: 'url(' + char.thumbnail.path + '.' + char.thumbnail.extension + ')' }">
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <h3>{{ char.name }}</h3>
-          </div>
-          <div class="card-action">
-            <router-link :to="{ name: 'details', params: { id: char.id } }">Details</router-link>
-            <a href="#">Add to favorites</a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <v-list-item>
+    <v-list-tile avatar router :href="{ name: 'details', params: { id: char.id } }">
+      <v-list-tile-action>
+        <v-icon :class="{faved: this.dataStore.localIds.includes(char.id)}">star</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title v-html="char.name"></v-list-tile-title>
+      </v-list-tile-content>
+  
+      <v-list-tile-avatar>
+        <img v-bind:src="char.thumbnail.path + '.' + char.thumbnail.extension">
+      </v-list-tile-avatar>
+  
+    </v-list-tile>
+  
+  </v-list-item>
 </template>
 
 <script>
+import { Store } from '@/Store.js'
 export default {
-  name:'character',
-  props:['char']
+  name: 'character',
+  props: ['char'],
+  data() {
+    return {
+      dataStore: Store.datas
+    }
+  },
+  created() {
+    /**
+     * Test if the current character is in fave list
+     */
+    Store.showFavorites();
+    this.dataStore.localList.forEach((elt) => this.dataStore.localIds.push(elt.id))
+  }
 }
 </script>
 
 <style scoped>
+.card-image {
+  width: 315px;
+  height: 250px;
+  background-size: cover;
+}
 
-  .card-image {
-    width:315px;
-    height: 250px;
-    background-size: cover;
-  }
+h3 {
+  font-size: 24px;
+}
 
-  h3 {
-    font-size: 24px;
-  }
-
+.faved {
+  color: gold;
+}
 </style>
 
 

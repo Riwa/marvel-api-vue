@@ -1,30 +1,44 @@
-# marvel-api-vue
+# Marvel API
+A small app using Marvel's API, using [http://vuejs.org/](Vue.js) with [https://vuetifyjs.com/](Vuetify), [https://nodejs.org/en/](Node.js) and [http://expressjs.com/fr/](Node Express 5)
 
-> Small app using Marvel's API
+## Features
+- Display characters from the 100th
+- Working pagination
+- 20 characters per page
+- Loader
+- Add up to 5 characters in a favorites list
 
-## Build Setup
+## How to run the app
 
-``` bash
-# install dependencies
-npm install
+### Clone
+    git clone git@github.com:Riwa/marvel-api-vue.git 
+    cd marvel-api-vue
 
-# serve with hot reload at localhost:8080
-npm run dev
+### Install Vue dependencies
+From root file (marvel-vue-api)
 
-# build for production with minification
-npm run build
+    npm i
 
-# build for production and view the bundle analyzer report
-npm run build --report
+### Install Node dependencies
+    cd api
+    npm i
 
-# run unit tests
-npm run unit
+### Launch node server
+It's recomanded to use Nodemon to launch the Node server.
+See [https://nodemon.io/](https://nodemon.io/)
 
-# run e2e tests
-npm run e2e
+    cd api
+    nodemon server.js
+The server will listen at port 3000
 
-# run all tests
-npm test
-```
+### Launch Vue app
+From root file (marvel-api-vue)
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+    npm run dev
+
+### Clear localStorage on http://localhost
+Add to favorites function use localStorage for data persistence. Pleas clear localStorage on http://localhost domain and refresh before using this function.
+
+
+### Display app in browser
+[http://localhost:8080](http://localhost:8080)
