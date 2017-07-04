@@ -1,6 +1,13 @@
 # Marvel API
 A small app using Marvel's API, using [http://vuejs.org/](Vue.js) with [https://vuetifyjs.com/](Vuetify), [https://nodejs.org/en/](Node.js) and [http://expressjs.com/fr/](Node Express 5)
 
+## Features
+- Display characters from the 100th
+- Working pagination
+- 20 characters per page
+- Loader
+- Add up to 5 characters in a favorites list
+
 ## How to run the app
 
 ### Clone
