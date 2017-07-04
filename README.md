@@ -1,5 +1,5 @@
 # Marvel API
-A small app using Marvel's API, using [http://vuejs.org/](Vue.js) with [https://vuetifyjs.com/](Vuetify), [https://nodejs.org/en/](Node.js) and [http://expressjs.com/fr/](ExpressJS)
+A small app using Marvel's API, using [Vue.js](http://vuejs.org/) with [Vuetify](https://vuetifyjs.com/), [Node.js](https://nodejs.org/en/) and [Express JS 5](http://expressjs.com/fr/)
 
 ## Features
 - Display characters from the 100th
