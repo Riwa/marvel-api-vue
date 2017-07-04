@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import {Store} from '@/Store.js'
+import { Store } from '@/Store.js'
 export default {
   name: 'character',
   props: ['char'],

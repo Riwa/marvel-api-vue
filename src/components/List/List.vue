@@ -43,7 +43,6 @@ export default {
     this.$Progress.start(1)
     Store.loadDatas().then((res) => {
       this.$Progress.finish()
-      console.log(this.dataStore)
     })
   },
 

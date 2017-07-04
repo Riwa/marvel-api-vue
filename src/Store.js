@@ -57,11 +57,11 @@ export const Store = {
    */
 
   addToFavorites(item) {
-      this.datas.localDatas.push({ 'id': item.id, 'picture': item.thumbnail.path + '.' + item.thumbnail.extension, 'name': item.name });
-      let datasToLocalStorage = JSON.stringify(this.datas.localDatas);
-      window.localStorage.setItem(item.id, datasToLocalStorage);
-      this.datas.localDatas = [];
-      datasToLocalStorage = '';
+    this.datas.localDatas.push({ 'id': item.id, 'picture': item.thumbnail.path + '.' + item.thumbnail.extension, 'name': item.name });
+    let datasToLocalStorage = JSON.stringify(this.datas.localDatas);
+    window.localStorage.setItem(item.id, datasToLocalStorage);
+    this.datas.localDatas = [];
+    datasToLocalStorage = '';
   },
 
   showFavorites() {

@@ -1,7 +1,11 @@
 <template>
   <v-app>
     <v-toolbar class="red" light>
-      <v-toolbar-title><h1><strong>Marvel</strong></h1></v-toolbar-title>
+      <v-toolbar-title>
+        <h1>
+          <strong>Marvel</strong>
+        </h1>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn router :to="{ name: 'favelist'}" icon light>
         <v-icon>favorite</v-icon>
@@ -30,7 +34,7 @@ h1 {
   font-size: 30px;
   line-height: 64px;
   text-transform: uppercase;
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
   font-weight: bold;
 }
 </style>
