@@ -36,5 +36,9 @@ From root file (marvel-api-vue)
 
     npm run dev
 
+### Clear localStorage on http://localhost
+Add to favorites function use localStorage for data persistence. Pleas clear localStorage on http://localhost domain and refresh before using this function.
+
+
 ### Display app in browser
 [http://localhost:8080](http://localhost:8080)
