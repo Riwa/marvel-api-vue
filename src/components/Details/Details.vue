@@ -7,8 +7,9 @@
         </v-btn>
         <v-toolbar-title class="hidden-sm-and-down">{{ details.results[0].name }}'s details</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon light>
-          <v-icon>favorite</v-icon>
+        <v-btn class="favorite-button" @click.native="addToFavorites(details.results[0])" icon light>
+          <v-icon v-if="this.dataStore.localIds.includes(this.details.results[0].id) == true">favorite</v-icon>
+          <v-icon v-else>favorite_border</v-icon>
         </v-btn>
       </v-toolbar>
       <v-card horizontal>
@@ -48,6 +49,20 @@
     <v-progress-circular :size="150" id="progress-circ" v-else indeterminate class="primary--text"></v-progress-circular>
   
     <vue-progress-bar></vue-progress-bar>
+
+    <v-snackbar
+      :timeout="dialog.timeout"
+      :top="dialog.y === 'top'"
+      :bottom="dialog.y === 'bottom'"
+      :right="dialog.x === 'right'"
+      :left="dialog.x === 'left'"
+      :multi-line="dialog.mode === 'multi-line'"
+      :vertical="dialog.mode === 'vertical'"
+      v-model="dialog.snackbar"
+    >
+      {{ dialog.text }}
+      <v-btn flat class="pink--text" @click.native="dialog.snackbar = false">Close</v-btn>
+    </v-snackbar>
   </v-layout>
 </template>
 
@@ -61,20 +76,53 @@ export default {
     return {
       details: {},
       comics: [],
+      dataStore: Store.datas,
+      dialog: {
+        snackbar: false,
+        y: 'top',
+        x: null,
+        mode: '',
+        timeout: 6000,
+        text: 'Il y a déjà 5 favoris dans votre liste. Supprimez-en avant d\'en ajouter de nouveaux'
+      }
     }
   },
   created() {
 
     this.$Progress.start()
 
+    /**
+     * Load character's details
+     * @param {number} this.$route.params.id The character's id fetched with the router link in List component
+     */
     Store.getCharacter(this.$route.params.id).then((res) => {
       this.details = res;
-      this.$Progress.finish()
     });
 
+      Store.showFavorites();
+      this.dataStore.localList.forEach((elt) => this.dataStore.localIds.push(elt.id)) 
+      this.$Progress.finish()
+
+
+    /**
+     * Load character's comics
+     * @param {number} this.$route.params.id The character's id fetched with the router link in List component
+     */
     Store.getComic(this.$route.params.id).then((res) => {
       this.comics = res;
     })
+  },
+
+  methods: {
+    addToFavorites(item) {
+      if(this.dataStore.localList.length <= 4) {
+        let button = document.querySelector(".favorite-button span i");
+        button.innerHTML = 'favorite'
+        Store.addToFavorites(item);
+      } else {
+        this.dialog.snackbar = true;
+      }
+    }
   }
 }
 </script>

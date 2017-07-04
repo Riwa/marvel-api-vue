@@ -2,7 +2,7 @@
   <v-list-item>
     <v-list-tile avatar router :href="{ name: 'details', params: { id: char.id } }">
       <v-list-tile-action>
-        <v-icon>star</v-icon>
+        <v-icon :class="{faved: this.dataStore.localIds.includes(char.id)}">star</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title v-html="char.name"></v-list-tile-title>
@@ -18,9 +18,20 @@
 </template>
 
 <script>
+import {Store} from '@/Store.js'
 export default {
   name: 'character',
   props: ['char'],
+  data() {
+    return {
+      dataStore: Store.datas
+    }
+  },
+  created() {
+    Store.showFavorites();
+    this.dataStore.localList.forEach((elt) => this.dataStore.localIds.push(elt.id))
+    console.log(this.dataStore.localIds)
+  }
 }
 </script>
 
@@ -33,6 +44,10 @@ export default {
 
 h3 {
   font-size: 24px;
+}
+
+.faved {
+  color: gold;
 }
 </style>
 

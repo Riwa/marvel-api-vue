@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 app.get('/page/:pageNb', (req, res) => {
   let pageNb = req.params.pageNb;
   let offset = 0;
+  // Compute the offset value to paginate all characters (20 items per page)
   if(pageNb == 1) {
     offset = 100;
   } else {
@@ -42,7 +43,7 @@ app.get('/page/:pageNb', (req, res) => {
 })
 
 app.get('/details/:id', (req, res) => {
-
+  // API call to get details of the clicked character
   axios.get(`${config.base}/${req.params.id}?ts=1&apikey=${config.apikey}&hash=${config.hash}`).then((response) => {
     console.log(response.data.data)
     return res.json(response.data.data)
@@ -51,13 +52,14 @@ app.get('/details/:id', (req, res) => {
 })
 
 app.get('/details/comics/:id', (req, res) => {
-
+  // API call to get comics where the clicked character appears
   axios.get(`${config.base}/${req.params.id}/comics?limit=3&ts=1&apikey=${config.apikey}&hash=${config.hash}`).then((response) => {
     return res.json(response.data.data)
   })
 
 })
 
+// Run server on port 3000
 app.listen(3000, function () {
   console.log('Listened on port 3000!')
 })
