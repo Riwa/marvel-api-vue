@@ -3,7 +3,7 @@
     <v-flex xs12 sm6 offset-sm3>
       <v-toolbar class="red" light>
         <v-toolbar-title class="hidden-sm-and-down">
-          <i class="material-icons">view_list</i> Liste des personages</v-toolbar-title>
+          <v-icon>view_list</v-icon> Liste des personages</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
       <v-card>

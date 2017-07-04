@@ -49,17 +49,8 @@
     <v-progress-circular :size="150" id="progress-circ" v-else indeterminate class="primary--text"></v-progress-circular>
   
     <vue-progress-bar></vue-progress-bar>
-
-    <v-snackbar
-      :timeout="dialog.timeout"
-      :top="dialog.y === 'top'"
-      :bottom="dialog.y === 'bottom'"
-      :right="dialog.x === 'right'"
-      :left="dialog.x === 'left'"
-      :multi-line="dialog.mode === 'multi-line'"
-      :vertical="dialog.mode === 'vertical'"
-      v-model="dialog.snackbar"
-    >
+  
+    <v-snackbar :timeout="dialog.timeout" :top="dialog.y === 'top'" :bottom="dialog.y === 'bottom'" :right="dialog.x === 'right'" :left="dialog.x === 'left'" :multi-line="dialog.mode === 'multi-line'" :vertical="dialog.mode === 'vertical'" v-model="dialog.snackbar">
       {{ dialog.text }}
       <v-btn flat class="pink--text" @click.native="dialog.snackbar = false">Close</v-btn>
     </v-snackbar>
@@ -99,9 +90,9 @@ export default {
       this.details = res;
     });
 
-      Store.showFavorites();
-      this.dataStore.localList.forEach((elt) => this.dataStore.localIds.push(elt.id)) 
-      this.$Progress.finish()
+    Store.showFavorites();
+    this.dataStore.localList.forEach((elt) => this.dataStore.localIds.push(elt.id))
+    this.$Progress.finish()
 
 
     /**
@@ -115,7 +106,7 @@ export default {
 
   methods: {
     addToFavorites(item) {
-      if(this.dataStore.localList.length <= 4) {
+      if (this.dataStore.localList.length <= 4) {
         let button = document.querySelector(".favorite-button span i");
         button.innerHTML = 'favorite'
         Store.addToFavorites(item);

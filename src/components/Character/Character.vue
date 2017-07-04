@@ -30,7 +30,6 @@ export default {
   created() {
     Store.showFavorites();
     this.dataStore.localList.forEach((elt) => this.dataStore.localIds.push(elt.id))
-    console.log(this.dataStore.localIds)
   }
 }
 </script>

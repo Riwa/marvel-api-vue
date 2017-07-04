@@ -3,7 +3,9 @@
     <v-flex xs12 sm6 offset-sm3>
       <v-toolbar class="red" light>
         <v-toolbar-title class="hidden-sm-and-down">
-          <v-icon>view_list</v-icon> Personnages favoris</v-toolbar-title>
+          <v-btn icon light router href="/">
+          <v-icon>arrow_back</v-icon>
+        </v-btn> Personnages favoris</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
       <v-card>
