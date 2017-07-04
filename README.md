@@ -9,6 +9,7 @@ A small app using Marvel's API, using [http://vuejs.org/](Vue.js) with [https://
 
 ### Install Vue dependencies
 From root file (marvel-vue-api)
+
     npm i
 
 ### Install Node dependencies
