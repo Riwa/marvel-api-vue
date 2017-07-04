@@ -48,4 +48,5 @@ Add to favorites function use localStorage for data persistence. Pleas clear loc
     mocha Api.spec.js
 
 Note : the test can require a timeout to works fine
+
     mocha Api.spec.js --timeout (time in ms)
