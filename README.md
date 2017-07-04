@@ -7,8 +7,12 @@ A small app using Marvel's API, using [http://vuejs.org/](Vue.js) with [https://
     git clone git@github.com:Riwa/marvel-api-vue.git 
     cd marvel-api-vue
 
-### Install dependencies
+### Install Vue dependencies
+From root file (marvel-vue-api)
+    npm i
 
+### Install Node dependencies
+    cd api
     npm i
 
 ### Launch node server

@@ -8,7 +8,9 @@
       </v-toolbar>
       <v-card>
         <v-list>
-          <character v-for="character in dataStore.characters.results" :key="character.id" :char="character"></character>
+          <transition-group name="list">
+            <character v-for="character in dataStore.characters.results" :key="character.id" :char="character"></character>
+          </transition-group>
         </v-list>
       </v-card>
       <div class="text-xs-center">
@@ -49,11 +51,30 @@ export default {
     getPage(pageNb) {
       this.$Progress.start(1)
       Store.loadPage(pageNb).then((res) => {
-      this.$Progress.finish()
-    })
+        this.$Progress.finish()
+      })
     }
 
   }
 
 }
 </script>
+
+<style scoped>
+.pagination {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+</style>
+

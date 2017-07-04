@@ -68,6 +68,7 @@ export default {
       details: {},
       comics: [],
       dataStore: Store.datas,
+      // Toast setup (show if the fave list is full (= 5 items))
       dialog: {
         snackbar: false,
         y: 'top',

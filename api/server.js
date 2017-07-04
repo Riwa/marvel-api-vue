@@ -17,6 +17,14 @@ app.use(cors());
 logger('tiny')
 app.use(helmet());
 
+/**
+ * Throw errors i, JSON format
+ */
+app.use(function (error, request, response, next) {
+  response.status(error.status || 500);
+  response.json({ error: error.message });
+});
+
 app.get('/', (req, res) => {
 
   axios.get(`${config.base}?offset=100&ts=1&apikey=${config.apikey}&hash=${config.hash}`).then((response) => {
@@ -26,10 +34,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/page/:pageNb', (req, res) => {
+  if (!req.params.pageNb) throw 'A page number is required !'
   let pageNb = req.params.pageNb;
   let offset = 0;
   // Compute the offset value to paginate all characters (20 items per page)
-  if(pageNb == 1) {
+  if (pageNb == 1) {
     offset = 100;
   } else {
     offset = 100 + (20 * pageNb);
@@ -43,6 +52,7 @@ app.get('/page/:pageNb', (req, res) => {
 })
 
 app.get('/details/:id', (req, res) => {
+  if (!req.params.id) throw 'ID is required !'
   // API call to get details of the clicked character
   axios.get(`${config.base}/${req.params.id}?ts=1&apikey=${config.apikey}&hash=${config.hash}`).then((response) => {
     console.log(response.data.data)
@@ -52,6 +62,7 @@ app.get('/details/:id', (req, res) => {
 })
 
 app.get('/details/comics/:id', (req, res) => {
+  if (!req.params.id) throw 'ID is required !'
   // API call to get comics where the clicked character appears
   axios.get(`${config.base}/${req.params.id}/comics?limit=3&ts=1&apikey=${config.apikey}&hash=${config.hash}`).then((response) => {
     return res.json(response.data.data)
