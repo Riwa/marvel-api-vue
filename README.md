@@ -1,5 +1,5 @@
 # Marvel API
-A small app using Marvel's API, using [http://vuejs.org/](Vue.js) with [https://vuetifyjs.com/](Vuetify) and [https://nodejs.org/en/](Node.js)
+A small app using Marvel's API, using [http://vuejs.org/](Vue.js) with [https://vuetifyjs.com/](Vuetify), [https://nodejs.org/en/](Node.js) and [http://expressjs.com/fr/](Node Express 5)
 
 ## How to run the app
 
