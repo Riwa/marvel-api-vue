@@ -28,6 +28,9 @@ export default {
     }
   },
   created() {
+    /**
+     * Test if the current character is in fave list
+     */
     Store.showFavorites();
     this.dataStore.localList.forEach((elt) => this.dataStore.localIds.push(elt.id))
   }

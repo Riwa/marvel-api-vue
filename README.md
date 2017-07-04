@@ -1,30 +1,28 @@
-# marvel-api-vue
+#Marvel API
+A small app using Marvel's API, using [http://vuejs.org/](Vue.js) with [https://vuetifyjs.com/](Vuetify) and [https://nodejs.org/en/](Node.js)
 
-> Small app using Marvel's API
+##How to run the app
 
-## Build Setup
+###Clone
+    git clone git@github.com:Riwa/marvel-api-vue.git 
+    cd marvel-api-vue
 
-``` bash
-# install dependencies
-npm install
+###Install dependencies
 
-# serve with hot reload at localhost:8080
-npm run dev
+    npm i
 
-# build for production with minification
-npm run build
+###Launch node server
+It's recomanded to use Nodemon to launch the Node server.
+See [https://nodemon.io/](https://nodemon.io/)
 
-# build for production and view the bundle analyzer report
-npm run build --report
+    cd api
+    nodemon server.js
+The server will listen at port 3000
 
-# run unit tests
-npm run unit
+###Launch Vue app
+From root file (marvel-api-vue)
 
-# run e2e tests
-npm run e2e
+    npm run dev
 
-# run all tests
-npm test
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+###Display app in browser
+[http://localhost:8080](http://localhost:8080)
