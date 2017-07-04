@@ -42,3 +42,10 @@ Add to favorites function use localStorage for data persistence. Pleas clear loc
 
 ### Display app in browser
 [http://localhost:8080](http://localhost:8080)
+
+## Test app (Node side / API)
+    cd api
+    mocha Api.spec.js
+
+Note : the test can require a timeout to works fine
+    mocha Api.spec.js --timeout (time in ms)
